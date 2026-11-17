@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="جرد السبائك">
+<meta name="theme-color" content="#0b1a33">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><link rel="icon" href="icon-192.png"><title>جرد سبائك الذهب</title>
+<style>
+:root{--g:#d4af37;--g2:#f3d778;--bg:#0b1a33;--c:#12284d;--c2:#1a3560;--t:#f4ecd4;--m:#a8b0c4;--r:#ff6b57;--ok:#58c27a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--t);font:16px "Geeza Pro","SF Arabic",system-ui,Tahoma,sans-serif;padding:env(safe-area-inset-top) 0 calc(84px + env(safe-area-inset-bottom))}
+header{padding:14px 14px 8px;border-bottom:1px solid var(--g);background:linear-gradient(#16305a,#0b1a33)}
+h1{margin:0 0 8px;font-size:22px;color:var(--g2)}h2{font-size:17px;color:var(--g);margin:18px 0 8px}
+.row{display:flex;gap:8px;align-items:center}main{padding:12px 12px 0;max-width:900px;margin:auto}
+input,select,textarea{width:100%;padding:13px;margin:4px 0 10px;background:var(--c2);color:var(--t);border:1px solid #3b5380;border-radius:10px;font:inherit}
+input[type=checkbox]{width:auto;margin:0;margin-inline-end:10px;transform:scale(1.4)}
+label{color:var(--m);font-size:14px}button{font:inherit;border:0;border-radius:12px;padding:14px;background:var(--c2);color:var(--g2);cursor:pointer;min-height:48px}
+button.p{width:100%;background:linear-gradient(#f3d778,#c9a227);color:#000;font-weight:700;font-size:18px}
+button.s{padding:8px 14px;min-height:38px;font-size:14px;margin-top:6px}button.d{color:var(--r)}
+.seg button{flex:1;font-size:19px;font-weight:700;border:2px solid #3b5380}.seg .on{background:var(--g);color:#000;border-color:var(--g)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cd{background:var(--c);border:1px solid #3b5380;border-radius:14px;padding:12px;text-align:center}
+.cd b{display:block;font-size:26px;color:var(--g2)}.cd small{color:var(--m)}.cd.g{border-color:var(--g)}
+.w{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px;text-align:center}th,td{padding:9px 5px;border-bottom:1px solid #243b66}
+th{color:var(--g);background:var(--c)}.tot td{font-weight:700;color:var(--g2);border-top:2px solid var(--g)}.neg{color:var(--r);font-weight:700}
+.it{background:var(--c);border:1px solid #2d4673;border-radius:12px;padding:12px;margin-bottom:8px;line-height:1.7}
+.bd{font-size:12px;padding:2px 8px;border-radius:20px;background:#333;color:var(--t)}.bd.k{background:#173a24;color:var(--ok)}.bd.o{background:#4a2a12;color:#ffb066}
+.cin{width:72px;margin:0;padding:8px;text-align:center}.mvc{cursor:pointer;color:var(--g2);font-weight:700;background:rgba(212,175,55,.12);border-radius:8px}
+#mvf{position:fixed;inset:0;z-index:30;background:rgba(5,12,28,.78);display:flex;align-items:flex-end}
+.sheetin{background:var(--c);width:100%;max-width:900px;margin:auto;max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;padding:16px 16px 28px;border-top:2px solid var(--g)}
+.warn{background:#3a0f0a;border:2px solid var(--r);color:#ffd2cb;border-radius:12px;padding:12px;margin-bottom:10px;font-weight:700}
+.bn{background:var(--g);color:#000;padding:10px 14px;font-weight:700;text-align:center}.mu{color:var(--m)}
+.ck{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid #243b66;color:var(--t);font-size:16px}
+nav{position:fixed;bottom:0;right:0;left:0;display:flex;background:#0a1730;border-top:1px solid var(--g);padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;border-radius:0;background:none;font-size:13px;color:var(--m);padding:10px 2px}nav .on{color:var(--g2);font-weight:700}
+#rp{display:none}
+@media print{body.pr #rp{display:block;font-size:12px;color:#000}body.pr #rp table{width:100%;border-collapse:collapse}body.pr #rp th,body.pr #rp td{border:1px solid #888;padding:4px;color:#000;background:#fff}body.pr main,body.pr header,body.pr nav,body.pr .bn,body.pr #lk{display:none!important}header input,nav,.noprint,.bn,.tb:not(#t1){display:none!important}body{background:#fff;color:#000;padding:0}h1,h2,th,.cd b,.tot td{color:#000}.cd,th{background:#fff;border:1px solid #000}td,th{border:1px solid #888}}
+</style></head><body>
+<header><h1>🪙 جرد سبائك الذهب</h1><div class="row"><input id="dt" type="date" aria-label="التاريخ"><button onclick="D=today();$('dt').value=D;R()">اليوم</button><button onclick="setL(L=='en'?'ar':'en')" style="min-width:64px">EN | ع</button></div></header>
+<div id="bn" class="bn" hidden onclick="tab(2)">💾 خذ نسخة احتياطية الآن</div>
+<main>
+<section class="tb" id="t1"><h2>جرد يوم <span id="dl"></span></h2><div class="cards" id="cards"></div>
+<h2>الحركة حسب الوزن</h2><div class="w"><table><thead><tr><th>الوزن</th><th>افتتاحي</th><th>داخل</th><th>طالع</th><th>المتاح</th><th>المعدود</th><th>الفرق</th></tr></thead><tbody id="jt"></tbody></table></div>
+<p id="dft"></p>
+<p class="mu">اكتب إجمالي الداخل وإجمالي الطالع لكل وزن في خانتيهما. أول مرة: أدخل رصيدك الحالي في خانة "داخل". المتاح = افتتاحي + داخل − طالع. العهدة سجل منفصل ولا تؤثر على المتاح. Gold Cut بالجرام.</p>
+<button class="s" onclick="$('ap').hidden=!$('ap').hidden">+ إضافة صنف جديد</button>
+<div id="ap" class="it" hidden><label>اسم الصنف</label><input id="an" placeholder="مثال: Gold Cut 21K أو سبيكة 250 جم">
+<label>طريقة العد</label><select id="au"><option value="p">بالقطعة (له وزن ثابت)</option><option value="g">بالجرام (سائب)</option></select>
+<label>وزن القطعة بالجرام (للقطع فقط)</label><input id="aw" type="number" inputmode="decimal" step="any" min="0">
+<button class="p" onclick="iadd()">إضافة الصنف</button></div><div id="al"></div>
+</section>
+
+
+<section class="tb" id="t3" hidden><h2>تسجيل عهدة جديدة</h2>
+<label>المحل أو الشخص</label><input id="kp" placeholder="اسم المحل أو الشخص">
+<label>الوزن</label><select id="kw"></select>
+<label>عدد القطع المسلّمة</label><input id="kq" type="number" inputmode="numeric" min="1">
+<label>رقم الفاتورة (إن وجد)</label><input id="kv"><label>ملاحظات</label><input id="kn">
+<button class="p" onclick="ksv()">تسجيل العهدة</button>
+<h2>العهد</h2><select id="cf" onchange="r3()"><option value="o">المفتوحة فقط</option><option value="all">الكل</option></select><div id="cl"></div></section>
+
+
+<section class="tb" id="t5" hidden><h2>إقفال اليوم</h2><div id="ck"></div>
+<h2>التقارير والنسخ الاحتياطي</h2><div class="cards"><button onclick="prn()">🖨 طباعة الجرد</button><button onclick="prr()">📄 تقرير الإقفال (طباعة / PDF)</button><button onclick="csv()">📊 تصدير الجرد</button><button onclick="kcsv()">📊 تصدير العهدة</button><button onclick="bk()">💾 نسخة JSON</button><button onclick="RP=0;$('rf').click()">♻️ استعادة نسخة</button></div>
+<input type="file" id="rf" accept=".json" hidden onchange="rs(this)">
+<h2>النسخ الاحتياطي التلقائي</h2><div class="it" id="bs"></div><button onclick="pick()">📁 اختيار مجلد النسخ التلقائي</button>
+<p class="mu">البيانات محفوظة في متصفح هذا الجهاز فقط. مسح بيانات الموقع أو تغيير الجهاز يفقدها، فخذ نسخة احتياطية أسبوعياً.</p>
+<h2>سجل الأيام</h2><div id="hs"></div>
+<h2>سجل التغييرات</h2><label class="ck"><input type="checkbox" id="la" onchange="rlg()">عرض كل الأيام</label><div id="lgl"></div>
+<h2>القفل بالرقم السري</h2><input id="pc" type="password" inputmode="numeric" placeholder="الرقم الحالي (إن وجد)"><input id="pn" type="password" inputmode="numeric" placeholder="رقم سري جديد (4 أرقام أو أكثر)">
+<div class="cards"><button onclick="pset()">حفظ الرقم</button><button onclick="prem()">إلغاء الرقم</button></div>
+<p class="mu">القفل يحمي الشاشة فقط ولا يشفّر البيانات. يقفل تلقائياً بعد 5 دقائق من ترك الصفحة.</p></section>
+<section class="tb" id="t6" hidden><h2>مطابقة الكاش</h2><div id="cs"></div>
+<h2>رصيد الدفتر</h2><input id="bk" type="number" inputmode="decimal" placeholder="الرصيد الحالي حسب الدفتر" onchange="bkc(this.value)">
+<h2>الكاش الموجود</h2><div class="row"><input id="ca" type="number" inputmode="decimal" placeholder="المبلغ"><input id="cb" placeholder="وصف (اختياري)"></div><button class="p" onclick="cadd()">إضافة كاش</button><div id="cl2" style="margin-top:10px"></div>
+<h2>العهد النقدية</h2><div class="row"><input id="ha" type="number" inputmode="decimal" placeholder="المبلغ"><input id="hb" placeholder="لمن / السبب"></div><button class="p" onclick="hadd()">إضافة عهدة</button><div id="hl" style="margin-top:10px"></div></section>
+</main>
+<div id="rp"></div>
+<div id="lk" hidden style="position:fixed;inset:0;z-index:99;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center"><h1>🔒 جرد سبائك الذهب</h1><input id="lp" type="password" inputmode="numeric" placeholder="الرقم السري" style="max-width:260px;text-align:center" onkeydown="if(event.key=='Enter')unl()"><button class="p" style="max-width:260px" onclick="unl()">فتح</button><button class="s" onclick="fgt()">نسيت الرقم؟</button></div>
+<nav><button onclick="tab(0)">📋<br>الجرد</button><button onclick="tab(1)">🤝<br>العهدة</button><button onclick="tab(2)">✅<br>الإقفال</button><button onclick="tab(3)">💰<br>الكاش</button></nav>
+<script>
+const W=[1,2.5,5,10,15.55,20,31.1,50,58.3,100,116.6,1000],K='goldstock_v1',$=i=>document.getElementById(i);
+let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}S=S||{m:[],c:{},b:0,k:[]};
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){alert('تعذر الحفظ! خذ نسخة احتياطية الآن')}};
+function mig(){S.k=S.k||[];if(!S.cash||Array.isArray(S.cash))S.cash={};S.ch=S.ch||[];S.d=S.d||{};S.it=S.it||[];S.log=S.log||[];S.m=S.m||[];if(S.m.length){S.m.forEach(m=>{const d=S.d[m.date]=S.d[m.date]||{},k=String(m.w),e=d[k]=d[k]||{i:0,o:0};e[m.type=='in'?'i':'o']+=m.q});S.m=[]}rebuild();save()}
+const EN=`🪙 جرد سبائك الذهب|🪙 Gold Bar Stock
+💾 خذ نسخة احتياطية الآن|💾 Time to back up. Tap here
+اليوم|Today
+اليوم:|Day:
+جرد يوم|Stock for
+الحركة حسب الوزن|Movement by weight
+الوزن|Weight
+افتتاحي|Opening
+داخل|In
+طالع|Out
+المتاح|Available
+المعدود|Counted
+الفرق|Diff
+اضغط على الوزن لاختياره في النموذج تحت. المتاح = افتتاحي + داخل − طالع. العهدة سجل منفصل للمتابعة فقط ولا تؤثر على المتاح.|Tap a weight to select it in the form below. Available = Opening + In − Out. Custody is a separate record for follow-up only and does not affect Available.
+حركة جديدة|New movement
+⬇ داخل|⬇ In
+⬆ طالع|⬆ Out
+عدد القطع|Pieces
+إجمالي الوزن|Total weight
+الطرف|Party
+المُسلَّم له (المحل أو الشخص)|Delivered to (shop or person)
+المستلَم منه (المورد)|Received from (supplier)
+اسم المحل أو الشخص|Shop or person name
+رقم الفاتورة (إن وجد)|Invoice no. (if any)
+⚠️ خروج بدون فاتورة! إذا كان عهدة سجّله هنا ثم سجّله أيضاً في تبويب العهدة.|⚠️ Out without an invoice! If it is custody, record it here and also in the Custody tab.
+ملاحظات|Notes
+حفظ الحركة|Save movement
+حفظ التعديل|Save changes
+إلغاء التعديل|Cancel edit
+تسجيل عهدة جديدة|Record new custody
+المحل أو الشخص|Shop or person
+عدد القطع المسلّمة|Pieces delivered
+تسجيل العهدة|Record custody
+العهد|Custody
+المفتوحة فقط|Open only
+الكل|All
+قطعة متاحة|Pieces available
+قطعة بعهدة|Pieces in custody
+جرام متاح|Grams available
+جرام بعهدة|Grams in custody
+مفتوحة|Open
+مكتملة|Complete
+مسلّمة · أُعيد|delivered · returned
+المتبقي|remaining
+ · فاتورة | · Invoice 
+ · بدون فاتورة| · No invoice
+تسجيل إرجاع|Record return
+حذف|Delete
+تعديل|Edit
+لا توجد عهد.|No custody records.
+لا توجد حركات.|No movements.
+سجل الحركات|Movement log
+بحث: محل، وزن، فاتورة|Search: shop, weight, invoice
+عرض كل الأيام|Show all days
+إقفال اليوم|Close the day
+✅ مُقفل|✅ Closed
+مُقفل|Closed
+مفتوح|Open
+خروج بدون فاتورة:|Out without invoice:
+ · عهد مفتوحة:| · Open custody:
+قائمة التحقق|Checklist
+مراجعة الداخل|Reviewed In
+مراجعة الطالع|Reviewed Out
+مراجعة العهد المفتوحة|Reviewed open custody
+التأكد من تسجيل كل التسليمات دون فواتير|All deliveries without invoices are recorded
+تسجيل أي فرق أو ملاحظة|Differences or notes recorded
+فروقات أو ملاحظات|Differences or notes
+إلغاء الإقفال|Reopen day
+تأكيد إقفال اليوم|Confirm day close
+ فيه فروقات| with differences
+لا يوجد سجل بعد.|No history yet.
+إجمالي الفرق:|Total difference:
+ قطعة / | pcs / 
+لا يوجد فرق|No difference
+التقارير والنسخ الاحتياطي|Reports and backup
+🖨 طباعة الجرد|🖨 Print stock
+📊 تصدير الحركات|📊 Export movements
+📊 تصدير العهدة|📊 Export custody
+💾 نسخة JSON|💾 Backup JSON
+♻️ استعادة نسخة|♻️ Restore backup
+البيانات محفوظة في متصفح هذا الجهاز فقط. مسح بيانات الموقع أو تغيير الجهاز يفقدها، فخذ نسخة احتياطية أسبوعياً.|Data is saved in this device's browser only. Clearing site data or changing device loses it, so back up weekly.
+سجل الأيام|Day history
+الجرد|Stock
+العهدة|Custody
+السجل|Log
+الإقفال|Close
+الكاش|Cash
+الإجمالي|Total
+مطابقة الكاش|Cash reconciliation
+رصيد الدفتر|Ledger balance
+الرصيد الحالي حسب الدفتر|Current ledger balance
+الكاش الموجود|Cash on hand
+المبلغ|Amount
+وصف (اختياري)|Description (optional)
+إضافة كاش|Add cash
+العهد النقدية|Cash custody
+لمن / السبب|To whom / reason
+إضافة عهدة|Add custody
+المجموع الفعلي|Actual total
+أدخل رصيد الدفتر للمطابقة|Enter the ledger balance to reconcile
+✓ مطابق|✓ Matched
+لا يوجد كاش مسجل لهذا اليوم.|No cash recorded for this day.
+لا توجد عهد مفتوحة.|No open custody.
+تمت التسوية|Settled
+تعذر الحفظ! خذ نسخة احتياطية الآن|Could not save! Back up now.
+هذا اليوم مُقفل. هل تريد التعديل؟|This day is closed. Edit anyway?
+أدخل عدد القطع|Enter the number of pieces
+أدخل اسم المحل أو الشخص|Enter the shop or person name
+⚠️ خروج بدون فاتورة!|⚠️ Out without an invoice!
+تأكيد الحفظ؟|Confirm saving?
+وإذا كان عهدة سجّله أيضاً في تبويب العهدة.|If it is custody, also record it in the Custody tab.
+قطعة فقط من|pieces only of
+تسجيل رغم ذلك؟|Record anyway?
+حذف حركة|Delete movement
+حذف عهدة|Delete custody
+ مع إرجاعاتها؟| with its returns?
+عدد القطع المعادة (المتبقي|Pieces returned (remaining
+اتركه كما هو للإرجاع الكامل|keep as is for a full return
+عدد غير صحيح|Invalid number
+أدخل المبلغ|Enter the amount
+حذف هذا المبلغ؟|Delete this amount?
+تأكيد تسوية هذه العهدة؟|Confirm settling this custody?
+حذف هذه العهدة؟|Delete this custody?
+أكمل كل بنود القائمة أولاً|Complete every checklist item first
+أدخل العدد المعدود لكل وزن (اكتب 0 إذا ما فيه).|Enter the counted pieces for every weight (use 0 if none).
+فيه فروقات. اكتب ملاحظة تشرحها قبل الإقفال.|There are differences. Write a note explaining them before closing.
+إقفال اليوم مع|Close the day with
+ فرق؟| difference(s)?
+تأكيد إقفال اليوم؟|Confirm closing this day?
+سيتم استبدال كل البيانات الحالية بالنسخة. متأكد؟|This replaces all current data with the backup. Continue?
+تمت الاستعادة|Backup restored
+ملف غير صالح|Invalid file
+عهد مفتوحة:|Open custody:
+🔒 جرد سبائك الذهب|🔒 Gold Bar Stock
+الرقم السري|PIN
+فتح|Unlock
+نسيت الرقم؟|Forgot the PIN?
+سجل التغييرات|Change log
+لا توجد تغييرات.|No changes.
+ · داخل:| · In:
+ · طالع:| · Out:
+ · المعدود:| · Counted:
+إضافة صنف:|Item added:
+حذف صنف:|Item deleted:
+عهدة جديدة:|New custody:
+إرجاع عهدة:|Custody return:
+حذف عهدة:|Custody deleted:
+هذا يوم سابق وفيه أيام مسجلة بعده (آخرها|This is a past day and later days are recorded (latest:
+تعديله يغيّر الأرصدة الافتتاحية للأيام اللي بعده.|Editing it changes the opening balances of the days after it.
+هل تريد المتابعة؟|Do you want to continue?
+القفل بالرقم السري|PIN lock
+🔐 القفل بالرقم السري: غير مفعّل|🔐 PIN lock: Off
+🔐 القفل بالرقم السري: مفعّل|🔐 PIN lock: On
+الرقم الحالي (إن وجد)|Current PIN (if any)
+رقم سري جديد (4 أرقام أو أكثر)|New PIN (4 digits or more)
+حفظ الرقم|Save PIN
+إلغاء الرقم|Remove PIN
+القفل يحمي الشاشة فقط ولا يشفّر البيانات. يقفل تلقائياً بعد 5 دقائق من ترك الصفحة.|The lock protects the screen only and does not encrypt the data. It locks automatically after 5 minutes away from the page.
+الرقم غير صحيح|Incorrect PIN
+الرقم الحالي غير صحيح|Current PIN is incorrect
+الرقم السري لازم 4 أرقام أو أكثر|The PIN must be 4 digits or more
+تم حفظ الرقم السري|PIN saved
+تم إلغاء الرقم السري|PIN removed
+لإلغاء الرقم لازم تستعيد نسخة احتياطية JSON، وسيتم استبدال البيانات الحالية بها. متابعة؟|To remove the PIN you must restore a JSON backup, which replaces the current data. Continue?
+📄 تقرير الإقفال (طباعة / PDF)|📄 Close report (print / PDF)
+تقرير إقفال يوم|Day-close report for
+حالة اليوم:|Day status:
+العهد المفتوحة (سبائك)|Open custody (bars)
+لا توجد|None
+الصنف|Item
+المسؤول:|Prepared by:
+المراجع:|Reviewed by:
++ إضافة صنف جديد|+ Add new item
+اسم الصنف|Item name
+طريقة العد|Counting method
+بالقطعة (له وزن ثابت)|By piece (fixed weight)
+بالجرام (سائب)|By gram (loose)
+وزن القطعة بالجرام (للقطع فقط)|Piece weight in grams (pieces only)
+مثال: Gold Cut 21K أو سبيكة 250 جم|Example: Gold Cut 21K or a 250 g bar
+إضافة الصنف|Add item
+الأصناف المضافة|Added items
+بالجرام|by gram
+أدخل اسم الصنف|Enter the item name
+أدخل وزن القطعة بالجرام|Enter the piece weight in grams
+هذا الصنف موجود|This item already exists
+لا يمكن حذف صنف عليه حركات.|Cannot delete an item that has movements.
+حذف هذا الصنف؟|Delete this item?
+اكتب إجمالي الداخل وإجمالي الطالع لكل وزن في خانتيهما. أول مرة: أدخل رصيدك الحالي في خانة "داخل". المتاح = افتتاحي + داخل − طالع. العهدة سجل منفصل ولا تؤثر على المتاح. Gold Cut بالجرام.|Type the total In and total Out for each weight in its cells. First time: enter your current stock in the "In" cell. Available = Opening + In − Out. Custody is a separate record and does not affect Available. Gold Cut is in grams.
+📊 تصدير الجرد|📊 Export stock
+اضغط على خانة داخل أو طالع في أي وزن لتسجيل حركة. المتاح = افتتاحي + داخل − طالع. العهدة سجل منفصل للمتابعة فقط ولا تؤثر على المتاح.|Tap the In or Out cell of any weight to record a movement. Available = Opening + In − Out. Custody is a separate record for follow-up only and does not affect Available.
+إلغاء|Cancel
+تعديل حركة|Edit movement
+هذه الميزة تعمل في Chrome أو Edge على الكمبيوتر فقط|This feature works in Chrome or Edge on a computer only
+تم اختيار المجلد: |Folder selected: 
+تم حفظ نسخة احتياطية في المجلد|Backup saved to the folder
+📁 اختيار مجلد النسخ التلقائي|📁 Choose auto-backup folder
+النسخ الاحتياطي التلقائي|Automatic backup
+📁 المجلد: غير محدد|📁 Folder: Not set
+📁 المجلد:|📁 Folder:
+🔒 التخزين الدائم: غير مفعّل|🔒 Persistent storage: Off
+🔒 التخزين الدائم: مفعّل|🔒 Persistent storage: On
+آخر نسخة: لا يوجد|Last backup: None
+آخر نسخة:|Last backup:`.split('\n').map(l=>l.split('|')).sort((a,b)=>b[0].length-a[0].length);
+const UR=[[/(^|[\s\d)])جم(?![\u0621-\u064A])/g,'$1g'],[/(\d) حركة/g,'$1 moves'],[/(\d) زيادة/g,'$1 over'],[/(\d) نقص/g,'$1 short'],[/زيادة (\d)/g,'Over $1'],[/نقص (\d)/g,'Short $1'],[/(\d+) فرق؟/g,'$1 difference(s)?'],[/؟/g,'?']];
+let L='ar';try{L=localStorage.getItem('goldlang')||'ar'}catch(e){}
+const T=s=>{if(L!='en'||!/[\u0600-\u06FF]/.test(s))return s;const t=s.trim();for(const[a,b]of EN)if(a.length<6&&t===a)return s.replace(a,b);for(const[a,b]of EN)if(a.length>=6)s=s.split(a).join(b);for(const[r,b]of UR)s=s.replace(r,b);return s};
+{const A=alert.bind(window),C=confirm.bind(window),P=prompt.bind(window);window.alert=m=>A(T(m));window.confirm=m=>C(T(m));window.prompt=(m,v)=>P(T(m),v)}
+const O=new WeakMap();
+function xl(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){if(n.parentNode.closest('[data-nt],script,style,textarea'))continue;if(!O.has(n))O.set(n,n.nodeValue);const v=L=='en'?T(O.get(n)):O.get(n);if(n.nodeValue!==v)n.nodeValue=v}
+document.querySelectorAll('[placeholder],[aria-label]').forEach(e=>['placeholder','aria-label'].forEach(a=>{if(!e.hasAttribute(a))return;const k='o'+a.replace('-','_');if(e.dataset[k]===undefined)e.dataset[k]=e.getAttribute(a);const v=L=='en'?T(e.dataset[k]):e.dataset[k];if(e.getAttribute(a)!==v)e.setAttribute(a,v)}))}
+const MO=new MutationObserver(()=>{MO.disconnect();xl();MO.observe(document.body,{childList:true,subtree:true,characterData:true})});
+function setL(l){L=l;try{localStorage.setItem('goldlang',l)}catch(e){}document.documentElement.lang=l;document.documentElement.dir=l=='en'?'ltr':'rtl';document.title=l=='en'?'Gold Bar Stock':'جرد سبائك الذهب';xl()}
+const r2=x=>Math.round(x*100)/100,n=x=>r2(x).toLocaleString('en-US'),sum=(a,f)=>a.reduce((s,x)=>s+f(x),0),tw=m=>r2(m.w*m.q);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const u=s=>'<span data-nt>'+esc(s)+'</span>';
+const today=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
+const tm=t=>new Date(t).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+let D=today(),editId=null,F={type:'in'};
+const lk=d=>!(S.c[d]&&S.c[d].done)||confirm('هذا اليوم مُقفل. هل تريد التعديل؟');
+const kl=()=>S.k.map(k=>{const ret=sum(k.r,r=>r.q);return{k,ret,rem:k.q-ret}});
+function tab(i){document.querySelectorAll('.tb').forEach((e,j)=>e.hidden=i!==j);document.querySelectorAll('nav button').forEach((e,j)=>e.classList.toggle('on',i===j));R();scrollTo(0,0)}
+function R(){$('dl').textContent=D;bst();r1();r3();r5();r6();rlg();const old=S.b?Date.now()-S.b>6048e5:S.m.length>0;$('bn').hidden=!old}
+function r1(){const c=S.c[D]||{},ro=c.done?' readonly':'';let h='';
+IT.forEach((x,i)=>{const e=ent(x.k),v=c.pc&&c.pc[x.k]!=null?c.pc[x.k]:'',inp=(f,val,fc,ch)=>`<input class="cin" type="number" inputmode="decimal" min="0" step="any" value="${val||''}"${ro} oninput="${f}" onfocus="FO=this.value${ch?';fw(this)':''}" onchange="alg('${fc}',${i},FO,this.value)">`;
+h+=`<tr><td>${x.n?u(x.n)+'<small class="mu"> '+(x.u=='g'?'':x.w+' ')+'جم</small>':x.w+' جم'}</td><td id="ob${i}"></td><td>${inp(`tot(${i},'i',this.value)`,e.i,'i',1)}</td><td>${inp(`tot(${i},'o',this.value)`,e.o,'o',1)}</td><td id="av${i}"></td><td>${inp(`pcs(${i},this.value)`,v,'c',0)}</td><td id="df${i}"></td></tr>`});
+$('jt').innerHTML=h+`<tr class="tot"><td>الإجمالي</td><td id="tt0"></td><td id="tt1"></td><td id="tt2"></td><td id="tt3"></td><td></td><td></td></tr>`;upd();ral()}
+function upd(){const c=S.c[D]||{};let t=[0,0,0,0],gw=0;
+IT.forEach((x,i)=>{const e=ent(x.k),ob=bal(x.k,0),bq=bal(x.k),pc=c.pc&&c.pc[x.k]!=null?c.pc[x.k]:'';
+$('ob'+i).textContent=n(ob);$('av'+i).innerHTML=`<b class="${bq<0?'neg':''}">${n(bq)}</b>`;$('df'+i).innerHTML=dfx(x.k,pc);
+if(x.u=='p'){t[0]+=ob;t[1]+=e.i;t[2]+=e.o;t[3]+=bq}gw+=bq*x.w});
+t.forEach((v,j)=>$('tt'+j).textContent=n(v));$('dft').innerHTML=dft(c);
+const oc=kl().filter(x=>x.rem>0);
+$('cards').innerHTML=`<div class="cd"><b>${n(t[3])}</b><small>قطعة متاحة</small></div><div class="cd g"><b>${sum(oc,x=>x.rem)}</b><small>قطعة بعهدة</small></div><div class="cd"><b>${n(gw)}</b><small>جرام متاح</small></div><div class="cd g"><b>${n(sum(oc,x=>x.rem*x.k.w))}</b><small>جرام بعهدة</small></div>`}
+function r3(){const f=$('cf').value,l=kl().filter(x=>f=='all'||x.rem>0).sort((a,b)=>(b.rem>0)-(a.rem>0)||a.k.date.localeCompare(b.k.date));
+$('cl').innerHTML=l.map(x=>`<div class="it"><b>${u(x.k.party)}</b> <span class="bd ${x.rem?'o':'k'}">${x.rem?'مفتوحة':'مكتملة'}</span><br>${x.k.w} جم × ${x.k.q} مسلّمة · أُعيد ${x.ret} · <b>المتبقي ${x.rem}</b> (${n(x.rem*x.k.w)} جم)<br><small class="mu">${x.k.date}${x.k.inv?' · فاتورة '+u(x.k.inv):''}${x.k.note?' · '+u(x.k.note):''}</small><br>${x.rem?`<button class="s" onclick="kret('${x.k.id}')">تسجيل إرجاع</button> `:''}<button class="s d" onclick="kdel('${x.k.id}')">حذف</button></div>`).join('')||'<p class="mu">لا توجد عهد.</p>'}
+const CK=['مراجعة الداخل','مراجعة الطالع','مراجعة العهد المفتوحة','التأكد من تسجيل كل التسليمات دون فواتير','تسجيل أي فرق أو ملاحظة'];
+const BASE=[...W.map(w=>({k:String(w),w,u:'p'})),{k:'GC24',w:1,u:'g',n:'Gold Cut 24K'},{k:'GC22',w:1,u:'g',n:'Gold Cut 22K'}];
+let IT=BASE;function rebuild(){IT=[...BASE,...(S.it||[]).map(x=>({k:x.k,w:x.w,u:x.u,n:x.n}))]}
+function iadd(){const nm=$('an').value.trim(),uu=$('au').value,ww=uu=='g'?1:parseFloat($('aw').value);
+if(!nm)return alert('أدخل اسم الصنف');if(uu=='p'&&!(ww>0))return alert('أدخل وزن القطعة بالجرام');
+if(IT.some(x=>String(x.n||x.w).toLowerCase()===nm.toLowerCase()))return alert('هذا الصنف موجود');
+S.it.push({k:'X'+Date.now(),n:nm,u:uu,w:ww});lge('iadd',{p:nm});rebuild();['an','aw'].forEach(i=>$(i).value='');$('ap').hidden=true;R()}
+function idel(k){if(Object.values(S.d).some(d=>d[k]&&(d[k].i||d[k].o)))return alert('لا يمكن حذف صنف عليه حركات.');if(!confirm('حذف هذا الصنف؟'))return;lge('idel',{p:(S.it.find(x=>x.k===k)||{}).n});S.it=S.it.filter(x=>x.k!==k);Object.values(S.c).forEach(c=>{if(c.pc)delete c.pc[k]});save();rebuild();R()}
+function ral(){$('al').innerHTML=S.it.length?'<h2>الأصناف المضافة</h2>'+S.it.map(x=>`<div class="it">${u(x.n)} <small class="mu">${x.u=='g'?'بالجرام':x.w+' جم'}</small> <button class="s d" onclick="idel('${x.k}')">حذف</button></div>`).join(''):''}
+const ent=k=>(S.d[D]||{})[k]||{i:0,o:0};
+const bal=(k,inc=1)=>Object.keys(S.d).reduce((a,d)=>(inc?d<=D:d<D)&&S.d[d][k]?a+S.d[d][k].i-S.d[d][k].o:a,0);
+function dfx(k,v){if(v===''||v==null)return'';const d=r2(v-bal(k));return Math.abs(d)<.005?'<b style="color:var(--ok)">✓</b>':`<b class="neg">${d>0?'+':''}${n(d)} ${d>0?'زيادة':'نقص'}</b>`}
+function dft(c){const k=IT.filter(x=>c.pc&&c.pc[x.k]!=null);if(!k.length)return'';const df=x=>c.pc[x.k]-bal(x.k),p=r2(sum(k.filter(x=>x.u=='p'),df)),g=r2(sum(k,x=>df(x)*x.w));return Math.abs(g)<.005&&Math.abs(p)<.005?'<span style="color:var(--ok)">لا يوجد فرق</span>':`<span class="neg">إجمالي الفرق: ${p>0?'+':''}${n(p)} قطعة / ${g>0?'+':''}${n(g)} جم</span>`}
+function pcs(i,v){const c=S.c[D]=S.c[D]||{t:[],n:''};c.pc=c.pc||{};const k=IT[i].k;if(v==='')delete c.pc[k];else c.pc[k]=Math.max(0,r2(parseFloat(v)||0));save();upd()}
+function tot(i,t,v){const k=IT[i].k,e=((S.d[D]=S.d[D]||{})[k]=S.d[D][k]||{i:0,o:0});e[t]=Math.max(0,r2(parseFloat(v)||0));save();upd()}
+const cdr=()=>S.cash[D]||{book:'',cash:[]},cdw=()=>S.cash[D]=S.cash[D]||{book:'',cash:[]},num=v=>{const x=parseFloat(v);return isNaN(x)?0:x};
+const hopen=()=>S.ch.filter(h=>h.date<=D&&(!h.done||h.done>D));
+function r6(){const c=cdr(),cs=sum(c.cash,x=>x.a),hs=hopen(),hh=sum(hs,h=>h.a),act=cs+hh,bk=c.book===''?null:num(c.book),df=bk==null?null:r2(act-bk);
+if(document.activeElement!==$('bk'))$('bk').value=c.book;
+$('cs').innerHTML=`<div class="cards"><div class="cd"><b>${n(cs)}</b><small>الكاش الموجود</small></div><div class="cd g"><b>${n(hh)}</b><small>العهد</small></div><div class="cd"><b>${n(act)}</b><small>المجموع الفعلي</small></div><div class="cd"><b>${bk==null?'-':n(bk)}</b><small>رصيد الدفتر</small></div></div><div class="it" style="text-align:center;font-size:18px;margin-top:8px">${df==null?'أدخل رصيد الدفتر للمطابقة':df===0?'<b style="color:var(--ok)">✓ مطابق</b>':`<b class="neg">${df>0?'زيادة':'نقص'} ${n(Math.abs(df))}</b>`}</div>`;
+$('cl2').innerHTML=c.cash.map(x=>`<div class="it"><b>${n(x.a)}</b> ${u(x.l)} <button class="s d" onclick="cdel('${x.id}')">حذف</button></div>`).join('')||'<p class="mu">لا يوجد كاش مسجل لهذا اليوم.</p>';
+$('hl').innerHTML=hs.map(h=>`<div class="it"><b>${n(h.a)}</b> ${u(h.l)} <small class="mu">${h.date}</small><br><button class="s" onclick="hset('${h.id}')">تمت التسوية</button> <button class="s d" onclick="hdel('${h.id}')">حذف</button></div>`).join('')||'<p class="mu">لا توجد عهد مفتوحة.</p>'}
+function bkc(v){cdw().book=v;save();R()}
+function cadd(){const a=num($('ca').value);if(!(a>0))return alert('أدخل المبلغ');cdw().cash.push({id:'c'+Date.now(),a,l:$('cb').value.trim()});$('ca').value=$('cb').value='';save();R()}
+function cdel(id){if(!confirm('حذف هذا المبلغ؟'))return;cdw().cash=cdw().cash.filter(x=>x.id!==id);save();R()}
+function hadd(){const a=num($('ha').value);if(!(a>0))return alert('أدخل المبلغ');S.ch.push({id:'h'+Date.now(),date:D,a,l:$('hb').value.trim()});$('ha').value=$('hb').value='';save();R()}
+function hset(id){const h=S.ch.find(x=>x.id===id);if(confirm('تأكيد تسوية هذه العهدة؟')){h.done=D;save();R()}}
+function hdel(id){if(!confirm('حذف هذه العهدة؟'))return;S.ch=S.ch.filter(x=>x.id!==id);save();R()}
+let FO='',RP=0;const WOK={},PK='goldpin';
+function lge(e,o){(S.log=S.log||[]).push({ts:new Date().toISOString(),d:D,e,...(o||{})});if(S.log.length>3000)S.log.splice(0,S.log.length-3000);save();rlg()}
+function alg(f,i,a,b){a=r2(parseFloat(a)||0);b=r2(parseFloat(b)||0);if(a!==b)lge(f,{k:IT[i].k,a,b})}
+const iname=k=>{const x=IT.find(y=>y.k===k);return x?(x.n||x.w+' جم'):k};
+function rlg(){if(!$('lgl'))return;const all=$('la').checked,l=(S.log||[]).filter(x=>all||x.d===D).slice().reverse().slice(0,150);
+const txt=x=>'ioc'.includes(x.e)&&x.e.length==1?u(iname(x.k))+' · '+({i:'داخل',o:'طالع',c:'المعدود'})[x.e]+': '+x.a+' ← '+x.b:x.e=='close'?'إقفال اليوم':x.e=='reopen'?'إلغاء الإقفال':x.e=='iadd'?'إضافة صنف: '+u(x.p):x.e=='idel'?'حذف صنف: '+u(x.p):x.e=='kadd'?'عهدة جديدة: '+u(x.p)+' — '+x.w+' جم × '+x.q:x.e=='kret'?'إرجاع عهدة: '+u(x.p)+' — '+x.q:'حذف عهدة: '+u(x.p)+' — '+x.w+' جم × '+x.q;
+$('lgl').innerHTML=l.map(x=>`<div class="it"><small class="mu">${x.d} · ${tm(x.ts)}</small><br>${txt(x)}</div>`).join('')||'<p class="mu">لا توجد تغييرات.</p>'}
+function fw(el){if(WOK[D])return;const last=Object.keys(S.d).filter(d=>d>D&&Object.values(S.d[d]).some(e=>e.i||e.o)).sort().pop();if(!last)return;if(confirm(`هذا يوم سابق وفيه أيام مسجلة بعده (آخرها ${last}).\nتعديله يغيّر الأرصدة الافتتاحية للأيام اللي بعده.\nهل تريد المتابعة؟`))WOK[D]=1;else el.blur()}
+const gp=()=>{try{return localStorage.getItem(PK)}catch(e){return null}};
+async function hs(x){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('gold:'+x));return [...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('')}catch(e){let h=5381;for(const c of 'gold:'+x)h=(h*33^c.charCodeAt(0))>>>0;return 'x'+h}}
+function lock(){if(gp()){$('lk').hidden=false;$('lp').value='';setTimeout(()=>$('lp').focus(),50)}}
+async function unl(){if(await hs($('lp').value)===gp()){$('lk').hidden=true;$('lp').value=''}else{alert('الرقم غير صحيح');$('lp').value=''}}
+async function pset(){const cur=gp();if(cur&&await hs($('pc').value)!==cur)return alert('الرقم الحالي غير صحيح');const v=$('pn').value.trim();if(!/^\d{4,}$/.test(v))return alert('الرقم السري لازم 4 أرقام أو أكثر');
+try{localStorage.setItem(PK,await hs(v))}catch(e){return alert('تعذر الحفظ! خذ نسخة احتياطية الآن')}$('pn').value=$('pc').value='';alert('تم حفظ الرقم السري');bst()}
+async function prem(){const cur=gp();if(!cur)return;if(await hs($('pc').value)!==cur)return alert('الرقم الحالي غير صحيح');try{localStorage.removeItem(PK)}catch(e){}$('pc').value='';alert('تم إلغاء الرقم السري');bst()}
+function fgt(){if(confirm('لإلغاء الرقم لازم تستعيد نسخة احتياطية JSON، وسيتم استبدال البيانات الحالية بها. متابعة؟')){RP=1;$('rf').click()}}
+let HID=0;document.addEventListener('visibilitychange',()=>{if(document.hidden)HID=Date.now();else if(gp()&&HID&&Date.now()-HID>3e5)lock()});
+function rpt(){const c=S.c[D]||{},cs=cdr(),cash=sum(cs.cash,x=>x.a),hh=sum(hopen(),h=>h.a),bk=cs.book===''?null:num(cs.book),act=cash+hh;
+const rows=IT.map(x=>{const e=ent(x.k),ob=bal(x.k,0),bq=bal(x.k),pc=c.pc&&c.pc[x.k]!=null?c.pc[x.k]:null;if(!(ob||e.i||e.o||bq||pc!=null))return'';return `<tr><td>${x.n?u(x.n)+' جم':x.w+' جم'}</td><td>${n(ob)}</td><td>${n(e.i)}</td><td>${n(e.o)}</td><td>${n(bq)}</td><td>${pc==null?'-':n(pc)}</td><td>${pc==null?'-':n(r2(pc-bq))}</td></tr>`}).join('');
+const ks=kl().filter(x=>x.rem>0).map(x=>`<tr><td>${u(x.k.party)}</td><td>${x.k.w} جم</td><td>${x.rem}</td><td>${x.k.date}</td></tr>`).join('');
+return `<h1>تقرير إقفال يوم ${D}</h1><p>حالة اليوم: ${c.done?'✅ مُقفل':'مفتوح'}</p><h2>الجرد</h2><table><thead><tr><th>الصنف</th><th>افتتاحي</th><th>داخل</th><th>طالع</th><th>المتاح</th><th>المعدود</th><th>الفرق</th></tr></thead><tbody>${rows}</tbody></table><p>${dft(c)}</p>
+<h2>العهد المفتوحة (سبائك)</h2>${ks?`<table><thead><tr><th>الطرف</th><th>الوزن</th><th>المتبقي</th><th>التاريخ</th></tr></thead><tbody>${ks}</tbody></table>`:'<p>لا توجد</p>'}
+<h2>الكاش</h2><table><tbody><tr><td>رصيد الدفتر</td><td>${bk==null?'-':n(bk)}</td></tr><tr><td>الكاش الموجود</td><td>${n(cash)}</td></tr><tr><td>العهد</td><td>${n(hh)}</td></tr><tr><td>المجموع الفعلي</td><td>${n(act)}</td></tr><tr><td>الفرق</td><td>${bk==null?'-':n(r2(act-bk))}</td></tr></tbody></table>
+<h2>قائمة التحقق</h2><p>${CK.map((k,i)=>(c.t&&c.t[i]?'☑ ':'☐ ')+k).join('<br>')}</p><h2>ملاحظات</h2><p>${u(c.n||'-')}</p><p style="margin-top:30px">المسؤول: ________________ &nbsp;&nbsp; المراجع: ________________</p>`}
+function prr(){$('rp').innerHTML=rpt();document.body.classList.add('pr');setTimeout(()=>print(),200)}
+onafterprint=()=>document.body.classList.remove('pr');
+function r5(){const c=S.c[D]||{t:[],n:''},dn=c.done,oc=kl().filter(x=>x.rem>0).length;
+$('ck').innerHTML=`<p>اليوم: <b>${D}</b> ${dn?'<span class="bd k">✅ مُقفل</span>':''}</p><p class="mu">عهد مفتوحة: ${oc}</p>`+`<p>${dft(c)}</p><h2>قائمة التحقق</h2>`+CK.map((k,i)=>`<label class="ck"><input type="checkbox" ${c.t[i]?'checked':''} onchange="ckc(${i},this.checked)">${k}</label>`).join('')+`<textarea rows="2" placeholder="فروقات أو ملاحظات" onchange="ckn(this.value)">${esc(c.n)}</textarea><button class="p" onclick="cls()">${dn?'إلغاء الإقفال':'تأكيد إقفال اليوم'}</button>`;
+const ds=[...new Set([...Object.keys(S.d),...Object.keys(S.c)])].sort().reverse();
+$('hs').innerHTML=ds.map(d=>`<div class="it" onclick="D='${d}';$('dt').value=D;tab(0)">${d} ${S.c[d]&&S.c[d].done?'<span class="bd k">مُقفل</span>':'<span class="bd o">مفتوح</span>'} <small class="mu">${S.c[d]&&S.c[d].dd?' · '+S.c[d].dd+ ' فيه فروقات':''}</small></div>`).join('')||'<p class="mu">لا يوجد سجل بعد.</p>'}
+function ckc(i,v){const c=S.c[D]=S.c[D]||{t:[],n:''};c.t[i]=v;save()}
+function ckn(v){const c=S.c[D]=S.c[D]||{t:[],n:''};c.n=v;save()}
+const DB=()=>new Promise((res,rej)=>{const r=indexedDB.open('goldfs',1);r.onupgradeneeded=()=>r.result.createObjectStore('h');r.onsuccess=()=>res(r.result);r.onerror=rej});
+const hget=async()=>{try{const db=await DB();return await new Promise(r=>{const q=db.transaction('h').objectStore('h').get('dir');q.onsuccess=()=>r(q.result||null);q.onerror=()=>r(null)})}catch(e){return null}};
+const hput=async h=>{const db=await DB();return new Promise(r=>{const t=db.transaction('h','readwrite');t.objectStore('h').put(h,'dir');t.oncomplete=r})};
+async function bst(){const h=await hget();let pr=false;try{pr=await navigator.storage.persisted()}catch(e){}
+$('bs').innerHTML=(h?'📁 المجلد: '+u(h.name):'📁 المجلد: غير محدد')+'<br>'+(pr?'🔒 التخزين الدائم: مفعّل':'🔒 التخزين الدائم: غير مفعّل')+'<br>'+(S.b?'آخر نسخة: '+new Date(S.b).toLocaleString('en-GB'):'آخر نسخة: لا يوجد')+'<br>'+(gp()?'🔐 القفل بالرقم السري: مفعّل':'🔐 القفل بالرقم السري: غير مفعّل')}
+async function pick(){if(!window.showDirectoryPicker)return alert('هذه الميزة تعمل في Chrome أو Edge على الكمبيوتر فقط');try{const h=await showDirectoryPicker({mode:'readwrite'});await hput(h);bst();alert('تم اختيار المجلد: '+h.name)}catch(e){}}
+async function abk(){try{const h=await hget();if(!h)return false;if(await h.queryPermission({mode:'readwrite'})!=='granted'&&await h.requestPermission({mode:'readwrite'})!=='granted')return false;
+const f=await h.getFileHandle('gold-backup-'+D+'.json',{create:true}),w=await f.createWritable();await w.write(JSON.stringify(S));await w.close();return true}catch(e){return false}}
+async function cls(){const c=S.c[D]=S.c[D]||{t:[],n:''};if(c.done){c.done=false;lge('reopen');R();return}
+if(IT.some(x=>!c.pc||c.pc[x.k]==null))return alert('أدخل العدد المعدود لكل وزن (اكتب 0 إذا ما فيه).');
+const dd=IT.filter(x=>Math.abs(c.pc[x.k]-bal(x.k))>.005).length;if(dd&&!(c.n||'').trim())return alert('فيه فروقات. اكتب ملاحظة تشرحها قبل الإقفال.');
+if(CK.some((_,i)=>!c.t[i]))return alert('أكمل كل بنود القائمة أولاً');
+try{const h0=await hget();if(h0&&await h0.queryPermission({mode:'readwrite'})!=='granted')await h0.requestPermission({mode:'readwrite'})}catch(e){}
+if(!confirm(dd?`إقفال اليوم مع ${dd} فرق؟`:'تأكيد إقفال اليوم؟'))return;
+c.done=true;c.dd=dd;c.at=new Date().toISOString();S.b=Date.now();lge('close');R();
+if(await abk())alert('تم حفظ نسخة احتياطية في المجلد');else bk()}
+function ksv(){const w=parseFloat($('kw').value),q=parseInt($('kq').value),p=$('kp').value.trim();if(!(q>0))return alert('أدخل عدد القطع');if(!p)return alert('أدخل اسم المحل أو الشخص');
+if(!lk(D))return;
+S.k.push({id:'k'+Date.now(),ts:new Date().toISOString(),date:D,w,q,party:p,inv:$('kv').value.trim(),note:$('kn').value.trim(),r:[]});lge('kadd',{p,w,q});['kq','kp','kv','kn'].forEach(i=>$(i).value='');R()}
+function kret(id){const x=kl().find(y=>y.k.id===id),v=prompt(`عدد القطع المعادة (المتبقي ${x.rem}). اتركه كما هو للإرجاع الكامل`,x.rem);if(v===null)return;const q=parseInt(v);if(!(q>0&&q<=x.rem))return alert('عدد غير صحيح');x.k.r.push({id:'r'+Date.now(),date:D,q});lge('kret',{p:x.k.party,q});R()}
+function kdel(id){const x=kl().find(y=>y.k.id===id);if(!confirm(`حذف عهدة ${x.k.party} (${x.k.w} جم × ${x.k.q}) مع إرجاعاتها؟`))return;S.k=S.k.filter(y=>y.id!==id);lge('kdel',{p:x.k.party,w:x.k.w,q:x.k.q});R()}
+function dlf(name,txt,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type}));a.download=name;document.body.appendChild(a);a.click();a.remove()}
+function csvx(name,rows){dlf(name+'-'+today()+'.csv','\ufeff'+rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n'),'text/csv')}
+function csv(){const rows=[L=='en'?['Date','Item','In','Out']:['التاريخ','الصنف','داخل','طالع']];Object.keys(S.d).sort().forEach(d=>IT.forEach(x=>{const e=S.d[d][x.k];if(e&&(e.i||e.o))rows.push([d,x.n||x.w,e.i,e.o])}));csvx('gold-stock',rows)}
+function kcsv(){csvx('gold-custody',[(L=='en'?['Date','Party','Weight','Delivered','Returned','Remaining','Invoice','Notes']:['التاريخ','الطرف','الوزن','المسلّم','المعاد','المتبقي','الفاتورة','ملاحظات']),...kl().map(x=>[x.k.date,x.k.party,x.k.w,x.k.q,x.ret,x.rem,x.k.inv,x.k.note])])}
+function bk(){S.b=Date.now();save();dlf('gold-backup-'+today()+'.json',JSON.stringify(S),'application/json');R()}
+function rs(i){const f=i.files[0];if(!f)return;const rp=RP;RP=0;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o||typeof o!='object'||!(Array.isArray(o.m)||o.d))throw 0;if(!confirm('سيتم استبدال كل البيانات الحالية بالنسخة. متأكد؟'))return;S={m:o.m||[],d:o.d||{},c:o.c||{},b:o.b||0,k:o.k||[],cash:o.cash||{},ch:o.ch||[],it:o.it||[],log:o.log||[]};mig();save();R();if(rp){try{localStorage.removeItem(PK)}catch(e){}$('lk').hidden=true}alert('تمت الاستعادة')}catch(e){alert('ملف غير صالح')}};r.readAsText(f);i.value=''}
+function prn(){tab(0);setTimeout(()=>print(),150)}
+
+$('kw').innerHTML=W.map(w=>`<option value="${w}">${w} جم</option>`).join('');mig();$('dt').value=D;$('dt').onchange=function(){D=this.value||today();R()};
+tab(0);MO.observe(document.body,{childList:true,subtree:true,characterData:true});setL(L);lock();try{navigator.storage.persist().then(bst)}catch(e){}
+</script>
+<script>if('serviceWorker' in navigator&&location.protocol.startsWith('http'))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))</script></body></html>
